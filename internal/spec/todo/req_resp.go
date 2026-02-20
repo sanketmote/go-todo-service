@@ -1,4 +1,4 @@
-package model
+package todo
 
 import "time"
 
@@ -10,19 +10,6 @@ const (
 	RepeatMonthly = "monthly"
 	RepeatYearly  = "yearly"
 )
-
-// Todo is the domain model for a todo item (DB and in-memory).
-// API uses snake_case for JSON fields per LLD.
-type Todo struct {
-	ID          int64      `db:"id"`
-	Title       string     `db:"title"`
-	Description string     `db:"description"` // Optional longer text; empty means none
-	Completed   bool       `db:"completed"`
-	DueDate     *time.Time `db:"due_date"`
-	RepeatType  string     `db:"repeat_type"` // none, daily, weekly, monthly, yearly
-	CreatedAt   time.Time  `db:"created_at"`
-	UpdatedAt   time.Time  `db:"updated_at"`
-}
 
 // CreateTodoRequest is the request body for POST /api/v1/todos.
 type CreateTodoRequest struct {
@@ -57,18 +44,4 @@ type TodoResponse struct {
 type ListTodosResponse struct {
 	Items []TodoResponse `json:"items"`
 	Total int64          `json:"total"`
-}
-
-// ToTodoResponse converts a domain Todo to TodoResponse.
-func ToTodoResponse(t *Todo) TodoResponse {
-	return TodoResponse{
-		ID:          t.ID,
-		Title:       t.Title,
-		Description: t.Description,
-		Completed:   t.Completed,
-		DueDate:     t.DueDate,
-		RepeatType:  t.RepeatType,
-		CreatedAt:   t.CreatedAt,
-		UpdatedAt:   t.UpdatedAt,
-	}
 }
