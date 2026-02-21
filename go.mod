@@ -3,6 +3,7 @@ module github.com/sanketmote/go-todo-service
 go 1.24.10
 
 require (
+	github.com/DATA-DOG/go-sqlmock v1.5.2
 	github.com/go-kit/kit v0.13.0
 	github.com/go-sql-driver/mysql v1.9.3
 	github.com/google/uuid v1.6.0
