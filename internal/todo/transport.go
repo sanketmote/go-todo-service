@@ -7,10 +7,10 @@ import (
 	"strconv"
 	"time"
 
+	httptransport "github.com/go-kit/kit/transport/http"
 	"github.com/gorilla/mux"
 	spectodo "github.com/sanketmote/go-todo-service/internal/spec/todo"
 	"github.com/sanketmote/go-todo-service/internal/svcerror"
-	httptransport "github.com/go-kit/kit/transport/http"
 )
 
 // Path constants for router registration.

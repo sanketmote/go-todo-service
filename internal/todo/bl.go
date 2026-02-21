@@ -1,4 +1,4 @@
-package service
+package todo
 
 import (
 	"context"
@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/sanketmote/go-todo-service/internal/repository"
-	"github.com/sanketmote/go-todo-service/internal/spec/datalayer/todo"
+	dltodo "github.com/sanketmote/go-todo-service/internal/spec/datalayer/todo"
 	spectodo "github.com/sanketmote/go-todo-service/internal/spec/todo"
 	"github.com/sanketmote/go-todo-service/internal/svcerror"
 	"github.com/sanketmote/gokit-wrapper/logger/svclog"
@@ -144,7 +144,7 @@ func validSort(sort string) bool {
 	}
 }
 
-func toTodoResponse(t *todo.Todo) *spectodo.TodoResponse {
+func toTodoResponse(t *dltodo.Todo) *spectodo.TodoResponse {
 	if t == nil {
 		return nil
 	}
