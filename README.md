@@ -132,7 +132,7 @@ curl -X DELETE http://localhost:8080/api/v1/todos/1
 
 ### API clients
 
-- **OpenAPI spec:** `docs/openapi.yaml` — OpenAPI 3.0 spec (validated in CI)
+- **Swagger spec:** `docs/swagger.json` — OpenAPI 3.0 spec (GitHub renders it when viewing the file; validated in CI)
 - **Postman:** Import `docs/go-todo-service.postman_collection.json` (variables: `baseUrl`, `healthzToken`, `todoId`)
 
 ## Project Structure
@@ -153,7 +153,7 @@ curl -X DELETE http://localhost:8080/api/v1/todos/1
 │   ├── todo/            # Business logic, endpoints, transport
 │   └── upgrade/         # Database migrations
 ├── docs/
-│   ├── openapi.yaml     # OpenAPI 3.0 spec
+│   ├── swagger.json     # OpenAPI 3.0 spec (GitHub renders natively)
 │   └── go-todo-service.postman_collection.json
 ├── docker-compose.yml
 ├── Dockerfile

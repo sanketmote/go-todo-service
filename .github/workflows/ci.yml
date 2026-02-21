@@ -47,4 +47,4 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Validate OpenAPI spec
-        run: npx @apidevtools/swagger-cli validate docs/openapi.yaml
+        run: npx @apidevtools/swagger-cli validate docs/swagger.json
