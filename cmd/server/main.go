@@ -83,6 +83,8 @@ func main() {
 		WriteTimeout: 60 * time.Second,
 	}
 
+	logger.Info(ctx, "layer", "main", "msg", "Starting application server")
+
 	err = server.ListenAndServe()
 	if err != nil {
 		if err == http.ErrServerClosed {
