@@ -40,3 +40,11 @@ jobs:
 
       - name: Build
         run: go build -v ./...
+
+  openapi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate OpenAPI spec
+        run: npx @apidevtools/swagger-cli validate docs/openapi.yaml
