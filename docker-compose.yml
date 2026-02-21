@@ -1,0 +1,39 @@
+services:
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: todos
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - appnet
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: ":8080"
+      MYSQL_DSN: "root:root@tcp(mysql:3306)/todos?parseTime=true"
+      XDRV_HEALTHZ_TOKEN: "dev"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - appnet
+    restart: on-failure
+
+networks:
+  appnet:
+    driver: bridge
+
+volumes:
+  mysql_data:
